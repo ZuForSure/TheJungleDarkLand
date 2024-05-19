@@ -7,13 +7,13 @@ public class FollowTarget : MonoBehaviour
     [SerializeField] protected float speed = 5f;
     [SerializeField] protected Transform target;
 
-    private void FixedUpdate()
+    private void Update()
     {
         this.Following();
     }
 
     protected virtual void Following()
     {
-        transform.position = Vector3.Lerp(transform.position, this.target.position, this.speed * Time.fixedDeltaTime);
+        transform.position = Vector3.Lerp(transform.position, this.target.position, this.speed * Time.deltaTime);
     }
 }

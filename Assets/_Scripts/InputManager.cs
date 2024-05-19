@@ -30,9 +30,7 @@ public class InputManager : MonoBehaviour
 
     public virtual float GetInputDash()
     {
-        this.inputDash = Input.GetAxisRaw("Jump");
+        this.inputDash = Input.GetAxis("Jump");
         return this.inputDash;
     }
-
-
 }
