@@ -17,7 +17,7 @@ public class ZuMonoBehaviour : MonoBehaviour
 
     protected virtual void Start()
     {
-        //for override
+        this.ResetValue();
     }
 
     protected virtual void Update()

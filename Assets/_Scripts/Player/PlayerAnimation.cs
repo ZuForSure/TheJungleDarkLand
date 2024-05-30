@@ -30,21 +30,43 @@ public class PlayerAnimation : PlayerAbstract
 
     protected virtual void Animation()
     {
+        this.MoveAnimation();
+        this.RunAniamtion();
+        this.AttackAnimation();
+    }
 
+    protected virtual void MoveAnimation()
+    {
         if (this.CanMoving())
         {
-            this.animator.SetFloat("Horizontal", InputManager.Instance.GetInputHorizontal());
-            this.animator.SetFloat("Vertical", InputManager.Instance.GetInputVertical());
+            this.animator.SetFloat("Horizontal", InputManager.Instance.InputHorizontal);
+            this.animator.SetFloat("Vertical", InputManager.Instance.InputVertical);
         }
+    }
 
+    protected virtual void RunAniamtion()
+    {
         this.animator.SetBool("IsRunning", this.CanMoving());
-        this.animator.SetBool("IsDashing", this.playerCtrl.PlayerMovement.isDashing);
+    }
+
+    protected virtual void AttackAnimation()
+    {
+        if (this.playerCtrl.PlayerAttack.isAttacking)
+        {
+            Vector3 direction = InputManager.Instance.MouseWorldPos - transform.parent.position;
+            direction.z = 0f;
+            direction.Normalize();
+
+            this.animator.SetFloat("AttackHorizontal", direction.x);
+            this.animator.SetFloat("AttackVertical", direction.y);
+        }
+        this.animator.SetBool("IsAttaking", this.playerCtrl.PlayerAttack.isAttacking);
     }
 
     protected virtual bool CanMoving()
     {
-        float horizontal = InputManager.Instance.GetInputHorizontal();
-        float vertical = InputManager.Instance.GetInputVertical();
+        float horizontal = InputManager.Instance.InputHorizontal;
+        float vertical = InputManager.Instance.InputVertical;
         Vector2 input = new(horizontal, vertical);
 
         if (input.magnitude > 0.1f) return true;
