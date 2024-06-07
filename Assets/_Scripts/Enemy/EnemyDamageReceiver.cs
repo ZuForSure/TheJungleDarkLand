@@ -29,6 +29,11 @@ public class EnemyDamageReceiver : DamageReceiver
 
     protected override void OnDead()
     {
-        Debug.Log("Goblin DEAD");
+        this.DespawnEnemy();
+    }
+
+    protected virtual void DespawnEnemy()
+    {
+        EnemySpawner.Instance.DespawnToPool(transform.parent);
     }
 }

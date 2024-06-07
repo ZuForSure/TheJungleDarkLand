@@ -4,17 +4,8 @@ using UnityEngine;
 
 public class SpawnPoints : ZuMonoBehaviour
 {
-    [SerializeField] protected static SpawnPoints instance;
-    public static SpawnPoints Instance => instance;
-
     [SerializeField] protected List<Transform> points;
     public List<Transform> Points => points;
-
-    protected override void Awake()
-    {
-        if (instance != null) Debug.LogWarning("Only 1 SpawnPoints are allowed to exist");
-        SpawnPoints.instance = this;
-    }
 
     protected override void LoadComponent()
     {
@@ -30,5 +21,11 @@ public class SpawnPoints : ZuMonoBehaviour
             this.points.Add(child);
         }
         Debug.Log(transform.name + ": LoadPoints", gameObject);
+    }
+
+    public virtual Transform GetRandomPoint()
+    {
+        int rand = Random.Range(0, this.points.Count);
+        return this.points[rand];
     }
 }

@@ -8,6 +8,8 @@ public abstract class Spawner : ZuMonoBehaviour
     [SerializeField] protected Transform holder;
     [SerializeField] protected List<Transform> prefabs;
     [SerializeField] protected List<Transform> poolObjs;
+    public int spawnCount = 0;
+    public List<Transform> Prefabs => prefabs;
 
     protected override void LoadComponent()
     {
@@ -56,7 +58,7 @@ public abstract class Spawner : ZuMonoBehaviour
         return this.SpawnPrefab(newPrefab, spawnPos, spawnRot);
     }
 
-    protected virtual Transform SpawnPrefab(Transform prefab, Vector3 spawnPos, Quaternion spawnRot)
+    public virtual Transform SpawnPrefab(Transform prefab, Vector3 spawnPos, Quaternion spawnRot)
     {
         Transform newPrefab = GetObjectFromPool(prefab);
         newPrefab.SetPositionAndRotation(spawnPos, spawnRot);
@@ -84,6 +86,7 @@ public abstract class Spawner : ZuMonoBehaviour
 
         Transform newPrefab = Instantiate(obj);
         newPrefab.name = obj.name;
+        this.spawnCount++;
         return newPrefab;
     }
 
@@ -95,5 +98,11 @@ public abstract class Spawner : ZuMonoBehaviour
         }
 
         return null;
+    }
+
+    public virtual Transform GetRandomPrefab()
+    {
+        int randPrefab = Random.Range(0, this.prefabs.Count);
+        return this.prefabs[randPrefab];
     }
 }
