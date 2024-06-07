@@ -2,27 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LookAtMouse: MonoBehaviour
+public class LookAtMouse: LookAtTarget
 {
+    [Header("Look At Mouse")]
     [SerializeField] protected Vector3 mousePosition;
 
-    private void Update()
+    private void LateUpdate()
     {
         this.GetPosition();
-        this.RotateFollowTarget();
+        this.AimTarget(this.mousePosition);
     }
 
     protected virtual void GetPosition()
     {
         this.mousePosition = InputManager.Instance.MouseWorldPos;
         this.mousePosition.z = 0f;
-    }
-
-    protected virtual void RotateFollowTarget()
-    {
-        Vector3 diff = this.mousePosition - this.transform.position;
-        diff.Normalize();
-        float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, rot_z);
     }
 }

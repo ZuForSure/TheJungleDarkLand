@@ -33,7 +33,7 @@ public class PlayerMovement : ZuMonoBehaviour
         Debug.Log(transform.name + ": LoadTrailRenderer", gameObject);
     }
 
-    protected override void Update()
+    protected void FixedUpdate()
     { 
         this.GetInput();
         this.Moving();
@@ -50,7 +50,7 @@ public class PlayerMovement : ZuMonoBehaviour
     {
         Vector3 direction = new(this.horizontal, this.vertical, 0);
         direction.Normalize();
-        transform.parent.position += direction * this.ActiveSpeed() * Time.deltaTime;
+        transform.parent.position += direction * this.ActiveSpeed() * Time.fixedDeltaTime;
     }
 
     protected virtual float ActiveSpeed()
@@ -87,7 +87,7 @@ public class PlayerMovement : ZuMonoBehaviour
     protected virtual void DashTimerDown()
     {
         if (this.dashCounter < 0f && this.dashCooldownCounter < 0f) return;
-        this.dashCounter -= Time.deltaTime;
-        this.dashCooldownCounter -= Time.deltaTime;
+        this.dashCounter -= Time.fixedDeltaTime;
+        this.dashCooldownCounter -= Time.fixedDeltaTime;
     }
 }

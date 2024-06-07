@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletDespawn : DespawnByDistance
 {
-    protected override void DespawnObj()
+    public override void DespawnObj()
     {
         BulletSpawner.Instance.DespawnToPool(transform.parent);
     }

@@ -15,7 +15,7 @@ public abstract class Despawn : ZuMonoBehaviour
         this.DespawnObj();
     }
 
-    protected virtual void DespawnObj()
+    public virtual void DespawnObj()
     {
         Destroy(transform.parent.gameObject);
     }

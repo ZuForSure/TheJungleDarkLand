@@ -29,6 +29,9 @@ public class PlayerShooting : MonoBehaviour
             Transform newBullet = BulletSpawner.Instance.SpawnPrefab(BulletSpawner.bulletOne, pos, rot);
             if (newBullet == null) return;
             newBullet.gameObject.SetActive(true);
+
+            BulletController bulletCtrl = newBullet.GetComponent<BulletController>();
+            bulletCtrl.SetShooter(transform.parent);
         }
            
         if (this.shootCooldownCount < 0 && this.isShooting) this.isShooting = false;
