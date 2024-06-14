@@ -30,10 +30,18 @@ public class EnemyDamageReceiver : DamageReceiver
     protected override void OnDead()
     {
         this.DespawnEnemy();
+        this.SpawnItemOnDead();
     }
 
     protected virtual void DespawnEnemy()
     {
         EnemySpawner.Instance.DespawnToPool(transform.parent);
+    }
+
+    protected virtual void SpawnItemOnDead()
+    {
+        Vector3 dropPos = transform.parent.position;
+        Quaternion dropRot = transform.rotation;
+        ItemSpawner.Instance.SpawnItem(this.enemyController.EnemySO.itemSpawnList, dropPos, dropRot);
     }
 }

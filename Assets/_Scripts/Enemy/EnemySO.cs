@@ -10,4 +10,5 @@ public class EnemySO : ScriptableObject
     public EnemyType enemyType;
     public int hp = 10;
     public int damageMax = 10;
+    public List<ItemSpawn> itemSpawnList;
 }

@@ -9,13 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10fa4ee2bb0f6d84daa56e80d64545d1, type: 3}
-  m_Name: Eagle
+  m_Script: {fileID: 11500000, guid: b429a4a250d4e584fad7d07b3f1b3d1d, type: 3}
+  m_Name: Soul
   m_EditorClassIdentifier: 
-  enemyName: 2
-  enemyType: 1
-  hp: 8
-  damageMax: 2
-  itemSpawnList:
-  - itemSO: {fileID: 11400000, guid: 00ea50ef28ad8db42aeb588967f66bc8, type: 2}
-    spawnCount: 1
+  itemName: 3
+  itemType: 2
+  maxDropRate: 100
+  maxStack: 10

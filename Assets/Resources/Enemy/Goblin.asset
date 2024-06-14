@@ -16,3 +16,6 @@ MonoBehaviour:
   enemyType: 1
   hp: 3
   damageMax: 1
+  itemSpawnList:
+  - itemSO: {fileID: 11400000, guid: 00e1254b51b47ef468547c44f75716a4, type: 2}
+    spawnCount: 1
