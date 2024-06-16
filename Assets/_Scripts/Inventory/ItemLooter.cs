@@ -41,8 +41,6 @@ public class ItemLooter : InventoryAbstract
         if (itemPickUp == null) return;
 
         ItemInventory itemInventory = itemPickUp.ItemController.ItemInventory;
-        this.inventory.AddItem(itemInventory);
-
-        itemPickUp.PickedItem();
+        if(this.inventory.AddItem(itemInventory)) itemPickUp.PickedItem();
     }
 }

@@ -7,6 +7,7 @@ public class ItemSO : ScriptableObject
 {
     public ItemName itemName;
     public ItemType itemType;
+    public Sprite itemSprite;
     public float maxDropRate = 100f;
     public int maxStack = 10;
 

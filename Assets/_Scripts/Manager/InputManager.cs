@@ -13,12 +13,14 @@ public class InputManager : MonoBehaviour
     [SerializeField] protected float inputDash;
     [SerializeField] protected float inputAttack;
     [SerializeField] protected float inputShoot;
+    [SerializeField] protected bool inputInventory;
     public Vector3 MouseWorldPos => mouseWorldPos;
     public float InputHorizontal => inputHorizontal;
     public float InputVertical => inputVertical;
     public float InputDash=> inputDash;
     public float InputAttack => inputAttack;
     public float InputShoot => inputShoot;
+    public bool InputInventory => inputInventory;
 
     private void Awake()
     {
@@ -33,6 +35,7 @@ public class InputManager : MonoBehaviour
         this.GetInputDash();
         this.GetInputAttack();
         this.GetInputShoot();
+        this.GetInputInventory();
     }
 
     protected virtual void GetMousePos()
@@ -59,5 +62,13 @@ public class InputManager : MonoBehaviour
     protected virtual void GetInputShoot()
     {
         this.inputShoot = Input.GetAxisRaw("Fire2");
+    }
+    
+    protected virtual void GetInputInventory()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            this.inputInventory = !this.inputInventory;
+        }
     }
 }
