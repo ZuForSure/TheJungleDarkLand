@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GoblinAnimation : EnemyAbstract
 {
+    [Header("Goblin Animation")]
     [SerializeField] protected Animator animator;
     [SerializeField] protected Vector3 targetPos;
     [SerializeField] protected Vector3 direction;
@@ -55,6 +56,8 @@ public class GoblinAnimation : EnemyAbstract
 
     protected virtual Vector3 GetDirection()
     {
+        if (GameController.Instance.isGameOver) return Vector3.zero;
+
         this.targetPos = this.enemyController.EnemyFollowPlayer.player.position;
         this.direction = this.targetPos - transform.parent.position;
         this.direction.Normalize();

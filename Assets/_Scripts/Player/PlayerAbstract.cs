@@ -6,6 +6,7 @@ public abstract class PlayerAbstract : ZuMonoBehaviour
 {
     [Header("Player Abstract")]
     [SerializeField] protected PlayerController playerCtrl;
+    public PlayerController PlayerCtrl => playerCtrl;
 
     protected override void LoadComponent()
     {

@@ -21,8 +21,6 @@ public abstract class EnemyAttack : EnemyAbstract
         Debug.Log(transform.name + ": LoadPlayer", gameObject);
     }
 
-    protected virtual bool CanAttack()
-    {
-        return false;
-    }
+    protected abstract bool CanAttack();
+    
 }

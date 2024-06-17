@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerDamageReceiver : DamageReceiver
 {
     [Header("Player Damage Receiver")]
-    [SerializeField] protected int maxPlayerHP = 10;
+    public int maxPlayerHP = 10;
 
     protected override void ResetValue()
     {
@@ -21,6 +21,6 @@ public class PlayerDamageReceiver : DamageReceiver
 
     protected override void OnDead()
     {
-        Debug.Log("Player DEAD");
+        GameController.Instance.GameOver();
     }
 }

@@ -40,6 +40,8 @@ public class PlayerAttack : ZuMonoBehaviour
 
     protected virtual void Attacking()
     {
+        if (GameController.Instance.isGameOver) return;
+
         if (this.CanAttack()) this.StartAttacking();
         if (this.attackTimeCounter < 0 && this.isAttacking) this.StopAttacking();
         this.AttackTimerDown();

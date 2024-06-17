@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    [SerializeField] protected float shootCooldown = 0.2f;
+    [SerializeField] protected float shootCooldown = 0.5f;
     [SerializeField] protected float shootCooldownCount = 0f;
     [SerializeField] protected bool isShooting = false;
 
@@ -24,7 +24,7 @@ public class PlayerShooting : MonoBehaviour
         {
             this.shootCooldownCount = this.shootCooldown;
 
-            Vector3 pos = transform.parent.position;
+            Vector3 pos = transform.position;
             Quaternion rot = transform.rotation;
             Transform newBullet = BulletSpawner.Instance.SpawnPrefab(BulletSpawner.bulletOne, pos, rot);
             if (newBullet == null) return;

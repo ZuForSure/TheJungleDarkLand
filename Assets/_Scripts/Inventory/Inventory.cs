@@ -2,16 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : ZuMonoBehaviour
+public class Inventory : PlayerAbstract
 {
+    [Header("Inventory")]
+    [SerializeField] protected ItemConsume itemConsume;
+
     [SerializeField] protected List<ItemInventory> itemInventoryList;
     [SerializeField] protected int inventorySlots = 10;
     public List<ItemInventory> ItemInventoryList => itemInventoryList;
+    public ItemConsume ItemConsume => itemConsume;
+
+    protected override void LoadComponent()
+    {
+        base.LoadComponent();
+        this.LoadItemConsume();
+    }
 
     protected override void Start()
     {
         base.Start();
         this.AddEmptyItemInventory();
+    }
+
+    protected virtual void LoadItemConsume()
+    {
+        if (this.itemConsume != null) return;
+        this.itemConsume = transform.GetComponentInChildren<ItemConsume>();
+        Debug.Log(transform.name + ": LoadItemConsume", gameObject);
     }
 
     protected virtual void AddEmptyItemInventory()
@@ -52,6 +69,7 @@ public class Inventory : ZuMonoBehaviour
             if(deductCount <= 0) break;
 
             itemInventory = this.itemInventoryList[i];
+            if(itemInventory.itemSO == null) continue;
             if(itemInventory.itemSO.itemName != itemName) continue;
 
             if(itemInventory.itemCount < deductCount)

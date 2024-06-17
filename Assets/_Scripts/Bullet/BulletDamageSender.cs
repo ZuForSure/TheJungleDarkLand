@@ -31,7 +31,7 @@ public class BulletDamageSender : DamageSender
         this.bulletCtrl.BulletDespawn.DespawnObj();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.parent == bulletCtrl.Shooter) return;
         this.SendDamageToObj(collision.transform);

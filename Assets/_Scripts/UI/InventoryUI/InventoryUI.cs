@@ -37,11 +37,18 @@ public class InventoryUI : ZuMonoBehaviour
 
     protected virtual void ToggleInventory()
     {
+        if (GameController.Instance.isGameOver) 
+        {
+            this.inventoryBackGroudUI.gameObject.SetActive(false);
+            this.titleInventory.gameObject.SetActive(false);
+            return;
+        }
+
         if (InputManager.Instance.InputInventory)
         {
             this.inventoryBackGroudUI.gameObject.SetActive(true);
             this.titleInventory.gameObject.SetActive(true);
-            this.inventoryBackGroudUI.SetItemInventoryFormPlayer();
+            this.inventoryBackGroudUI.SetItemInventoryFromPlayer();
         }
         else
         {

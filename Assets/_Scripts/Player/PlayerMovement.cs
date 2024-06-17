@@ -48,6 +48,8 @@ public class PlayerMovement : ZuMonoBehaviour
 
     protected virtual void Moving()
     {
+        if (GameController.Instance.isGameOver) return;
+
         Vector3 direction = new(this.horizontal, this.vertical, 0);
         direction.Normalize();
         transform.parent.position += direction * this.ActiveSpeed() * Time.fixedDeltaTime;

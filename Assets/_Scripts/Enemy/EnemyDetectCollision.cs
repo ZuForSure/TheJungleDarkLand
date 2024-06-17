@@ -30,7 +30,7 @@ public abstract class EnemyDetectCollision : ZuMonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag(this.compareTag))
+        if (collision.gameObject.CompareTag(this.compareTag))
         {
             this.isPlayerComeIn = true;
         }

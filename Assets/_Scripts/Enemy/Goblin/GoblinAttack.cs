@@ -19,7 +19,6 @@ public class GoblinAttack : EnemyAttack
     {
         base.LoadComponent();
         this.LoadGoblinHitBox();
-
     }
 
     protected override void Update()
@@ -54,6 +53,12 @@ public class GoblinAttack : EnemyAttack
     protected virtual void StartAttack()
     {
         this.isAttaking = true;
+
+        if (GameController.Instance.isGameOver)
+        {
+            this.isAttaking = false;
+        }
+
         this.goblinHitBox.gameObject.SetActive(this.isAttaking);
         this.attackTimeCounter = this.attackTime;
         this.attackCoolDownCounter = this.attackCoolDown;

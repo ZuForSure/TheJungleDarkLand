@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawnAtPoint : ZuMonoBehaviour
 {
     [SerializeField] protected SpawnerController spawnerCtrl;
-    [SerializeField] protected int maxEnemies = 4;
+    [SerializeField] protected int maxEnemies;
 
     protected override void LoadComponent()
     {
@@ -28,7 +28,8 @@ public class EnemySpawnAtPoint : ZuMonoBehaviour
 
     protected virtual void EnemySpawning()
     {
-        //if (this.ReachLimitEnemies()) return;
+        this.maxEnemies = this.spawnerCtrl.SpawnPoints.Points.Count;
+
         for(int i = 0; i < this.maxEnemies; i++)
         {
             Transform randPoint = this.spawnerCtrl.SpawnPoints.GetRandomPoint();
@@ -39,10 +40,5 @@ public class EnemySpawnAtPoint : ZuMonoBehaviour
             Transform newEnemy = this.spawnerCtrl.Spawner.SpawnPrefab(randEnemy, randPos, randRot);
             newEnemy.gameObject.SetActive(true);
         }
-    }
-
-    protected virtual bool ReachLimitEnemies()
-    {
-        return this.spawnerCtrl.Spawner.spawnCount >= this.maxEnemies;
     }
 }

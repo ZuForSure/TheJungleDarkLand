@@ -17,7 +17,7 @@ public class EnemyDamageReceiver : DamageReceiver
     protected virtual void LoadEnemyCtrl()
     {
         if (this.enemyController != null) return;
-        this.enemyController = transform.GetComponentInParent<EnemyController>();
+        this.enemyController = transform.parent.GetComponent<EnemyController>();
         Debug.Log(transform.name + ": LoadEnemyCtrl", gameObject);
     }
 
@@ -44,4 +44,5 @@ public class EnemyDamageReceiver : DamageReceiver
         Quaternion dropRot = transform.rotation;
         ItemSpawner.Instance.SpawnItem(this.enemyController.EnemySO.itemSpawnList, dropPos, dropRot);
     }
+
 }

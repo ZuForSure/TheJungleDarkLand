@@ -1,24 +1,56 @@
-using System.Collections;
-using System.Collections.Generic;
+
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemInventoryUI : ZuMonoBehaviour
 {
+    [SerializeField] protected InventoryBackGroudUI invenBackGroundUI;
     [SerializeField] protected Image icon;
-    [SerializeField] protected Text quatity;
+    [SerializeField] protected TextMeshProUGUI quantityText;
+    [SerializeField] protected ItemSO itemSO_UI;
 
-    public virtual void SetIconFormInventory(ItemInventory itemInventory)
+    protected override void LoadComponent()
+    {
+        base.LoadComponent();
+        this.LoadInventoryBackGroudUI();
+    }
+
+    protected virtual void LoadInventoryBackGroudUI()
+    {
+        if (this.invenBackGroundUI != null) return;
+        this.invenBackGroundUI = transform.parent.GetComponent<InventoryBackGroudUI>();
+        Debug.Log(transform.name + ": LoadInventoryBackGroudUI", gameObject);
+    }
+
+    public virtual void SetIconFromInventory(ItemInventory itemInventory)
     {
         if(itemInventory.itemSO != null)
         {
+            this.icon.color = new Color(1, 1, 1, 1);
             this.icon.sprite = itemInventory.itemSO.itemSprite;
-            this.quatity.text = itemInventory.itemCount.ToString();
+            this.quantityText.text = itemInventory.itemCount.ToString();
+            this.itemSO_UI = itemInventory.itemSO;
         }
         else
         {
+            this.icon.color = new Color(1, 1, 1, 0);
             this.icon.sprite = null;
-            this.quatity.text = "";
+            this.quantityText.text = "";
+            this.itemSO_UI = null;
         }
+    }
+
+    public virtual void ConsumeItemByUI()
+    {
+        if (this.itemSO_UI == null) return;
+        ItemInventory itemInventory = new ItemInventory()
+        {
+
+            itemSO = this.itemSO_UI,
+            itemCount = 1,
+            itemMaxStack = this.itemSO_UI.maxStack,
+        };
+        this.invenBackGroundUI.InventoryUI.PlayerInventory.ItemConsume.ConSume(itemInventory);
     }
 }

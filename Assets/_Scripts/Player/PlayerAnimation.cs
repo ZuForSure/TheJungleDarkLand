@@ -33,6 +33,7 @@ public class PlayerAnimation : PlayerAbstract
         this.MoveAnimation();
         this.RunAniamtion();
         this.AttackAnimation();
+        this.DeathAnimation();
     }
 
     protected virtual void MoveAnimation()
@@ -61,6 +62,10 @@ public class PlayerAnimation : PlayerAbstract
             this.animator.SetFloat("AttackVertical", direction.y);
         }
         this.animator.SetBool("IsAttaking", this.playerCtrl.PlayerAttack.isAttacking);
+    }
+    protected virtual void DeathAnimation()
+    {
+        this.animator.SetBool("IsGameOver", GameController.Instance.isGameOver);
     }
 
     protected virtual bool CanMoving()

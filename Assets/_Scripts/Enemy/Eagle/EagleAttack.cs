@@ -35,6 +35,8 @@ public class EagleAttack : EnemyAttack
     protected override bool CanAttack()
     {
         this.isAttaking = enemyController.EnemyDetectCollision.isPlayerComeIn;
+        if (GameController.Instance.isGameOver) this.isAttaking = false;
+
         return this.isAttaking;   
     }
 }

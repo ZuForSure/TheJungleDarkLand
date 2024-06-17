@@ -5,10 +5,10 @@ using UnityEngine;
 public abstract class DamageReceiver : ZuMonoBehaviour
 {
     [Header("Damage Receiver")]
-    [SerializeField] protected BoxCollider2D boxCollider2D;
+    [SerializeField] protected Collider2D colli2D;
     [SerializeField] protected int maxHP = 3;
-    [SerializeField] protected int hp = 3;
     [SerializeField] protected bool isDead = false;
+    public int hp = 3;
 
     protected override void LoadComponent()
     {
@@ -18,8 +18,8 @@ public abstract class DamageReceiver : ZuMonoBehaviour
 
     protected virtual void LoadBoxCollider2D()
     {
-        if (this.boxCollider2D != null) return;
-        this.boxCollider2D = transform.GetComponent<BoxCollider2D>();
+        if (this.colli2D != null) return;
+        this.colli2D = transform.GetComponent<Collider2D>();
         Debug.Log(transform.name + ": LoadBoxCollider2D", gameObject);
     }
 
@@ -29,6 +29,7 @@ public abstract class DamageReceiver : ZuMonoBehaviour
 
         this.hp -= deduct;
         if(this.hp < 0) this.hp = 0;
+
         this.CheckIsDead();
     }
 

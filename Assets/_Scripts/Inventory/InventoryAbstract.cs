@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryAbstract : ZuMonoBehaviour
 {
     [Header("Inventory Abstract")]
-    [SerializeField] protected Inventory inventory;
+    public Inventory inventory;
 
     protected override void LoadComponent()
     {

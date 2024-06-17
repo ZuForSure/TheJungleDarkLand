@@ -6,6 +6,7 @@ public abstract class InventoryAbstractUI : ZuMonoBehaviour
 {
     [Header("Inventory Abstract UI")]
     [SerializeField] protected InventoryUI inventoryUI;
+    public InventoryUI InventoryUI => inventoryUI;
 
     protected override void LoadComponent()
     {

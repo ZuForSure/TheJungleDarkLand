@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EagleAnimation : EnemyAbstract
 {
+    [Header("Eagle Animation")]
     [SerializeField] protected Animator animator;
     [SerializeField] protected Vector3 targetPos;
     [SerializeField] protected Vector3 direction;
@@ -29,7 +30,6 @@ public class EagleAnimation : EnemyAbstract
     protected virtual void Animation()
     {
         this.RunAnimation();
-        //this.AttackAnimation();
     }
 
     protected virtual void RunAnimation()
@@ -42,16 +42,6 @@ public class EagleAnimation : EnemyAbstract
 
         this.animator.SetBool("IsRunning", this.enemyController.EnemyDetectCollision.isPlayerComeIn);
     }
-
-    //protected virtual void AttackAnimation()
-    //{
-    //    if (this.enemyController.EnemyAttack.isAttaking)
-    //    {
-    //        this.animator.SetFloat("AttackHorizontal", this.GetDirection().x);
-    //        this.animator.SetFloat("AttackVertical", this.GetDirection().y);
-    //    }
-    //    this.animator.SetBool("isAttacking", this.enemyController.EnemyAttack.isAttaking);
-    //}
 
     protected virtual Vector3 GetDirection()
     {

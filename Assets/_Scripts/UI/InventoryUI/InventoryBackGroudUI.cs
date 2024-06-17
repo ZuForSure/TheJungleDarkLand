@@ -6,6 +6,7 @@ public class InventoryBackGroudUI : InventoryAbstractUI
 {
     [Header("Inventory BackGroud UI")]
     [SerializeField] protected List<ItemInventoryUI> itemInventoryUIs;
+    public List<ItemInventoryUI> ItemInventoryUIs => itemInventoryUIs;
 
     protected override void LoadComponent()
     {
@@ -24,13 +25,14 @@ public class InventoryBackGroudUI : InventoryAbstractUI
         Debug.Log(transform.name + ": LoadInventoryUI", gameObject);
     }
 
-    public virtual void SetItemInventoryFormPlayer()
+    public virtual void SetItemInventoryFromPlayer()
     {
         if (this.itemInventoryUIs.Count != this.inventoryUI.PlayerInventory.ItemInventoryList.Count) return;
 
         for(int i = 0; i < this.itemInventoryUIs.Count; i++)
         {
-            itemInventoryUIs[i].SetIconFormInventory(this.inventoryUI.PlayerInventory.ItemInventoryList[i]);
+            this.itemInventoryUIs[i].SetIconFromInventory(this.inventoryUI.PlayerInventory.ItemInventoryList[i]);
         }
     }
+
 }
