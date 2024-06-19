@@ -36,6 +36,11 @@ public class EnemyBulletDamSender : BulletDamageSender
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy")) return;
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            this.SpawnFX();
+            BulletSpawner.Instance.DespawnToPool(transform.parent);
+        }
         base.OnTriggerEnter2D(collision);
     }
 }

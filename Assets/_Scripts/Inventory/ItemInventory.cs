@@ -5,5 +5,5 @@ public class ItemInventory
 {
     public ItemSO itemSO;
     public int itemCount = 0;
-    public int itemMaxStack = 2;
+    public int itemMaxStack = 4;
 }

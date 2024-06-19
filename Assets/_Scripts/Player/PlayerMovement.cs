@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(TrailRenderer))]
@@ -10,15 +8,15 @@ public class PlayerMovement : ZuMonoBehaviour
     [SerializeField] protected TrailRenderer trilRenderer;
 
     [SerializeField] protected float speed = 5f;
+    private float horizontal;
+    private float vertical;
+
     [SerializeField] protected float dashSpeed = 5f;
     [SerializeField] protected float dashTime = 0.25f;
     [SerializeField] protected float dashCounter = 0f;
     [SerializeField] protected float dashCooldown = 0.75f;
     [SerializeField] protected float dashCooldownCounter = 0f;
     public bool isDashing = false;
-
-    private float horizontal;
-    private float vertical;
     private float dash;
 
     protected override void LoadComponent()
@@ -43,6 +41,7 @@ public class PlayerMovement : ZuMonoBehaviour
     {
         this.horizontal = InputManager.Instance.InputHorizontal;
         this.vertical = InputManager.Instance.InputVertical;
+
         this.dash = InputManager.Instance.InputDash;
     }
 

@@ -14,6 +14,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] protected float inputAttack;
     [SerializeField] protected float inputShoot;
     [SerializeField] protected bool inputInventory;
+
     public Vector3 MouseWorldPos => mouseWorldPos;
     public float InputHorizontal => inputHorizontal;
     public float InputVertical => inputVertical;
@@ -63,7 +64,7 @@ public class InputManager : MonoBehaviour
     {
         this.inputShoot = Input.GetAxisRaw("Fire2");
     }
-    
+
     protected virtual void GetInputInventory()
     {
         if (Input.GetKeyDown(KeyCode.Tab))

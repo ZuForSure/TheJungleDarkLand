@@ -9,7 +9,12 @@ public enum ItemName
     Tomato = 2,
     Soul = 3,
     Meat = 4,
-    Key = 5,
+    SunKey = 5,
+    WaterKey = 6,
+    FireKey = 7,
+    MoonKey = 8,
+    LandKey = 9,
+    PlantKey = 10,
 }
 
 public class ItemNameParser

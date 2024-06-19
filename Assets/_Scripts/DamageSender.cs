@@ -31,5 +31,4 @@ public abstract class DamageSender : ZuMonoBehaviour
     {
         damageReceiver.DeductHP(this.damage);
     }
-
 }

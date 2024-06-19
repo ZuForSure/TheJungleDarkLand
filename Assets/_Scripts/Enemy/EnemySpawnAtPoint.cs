@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawnAtPoint : ZuMonoBehaviour
@@ -30,7 +28,7 @@ public class EnemySpawnAtPoint : ZuMonoBehaviour
     {
         this.maxEnemies = this.spawnerCtrl.SpawnPoints.Points.Count;
 
-        for(int i = 0; i < this.maxEnemies; i++)
+        for (int i = 0; i < this.maxEnemies; i++)
         {
             Transform randPoint = this.spawnerCtrl.SpawnPoints.GetRandomPoint();
             Transform randEnemy = this.spawnerCtrl.Spawner.GetRandomPrefab();

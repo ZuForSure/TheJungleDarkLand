@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LookAtTarget : ZuMonoBehaviour
@@ -12,3 +10,5 @@ public class LookAtTarget : ZuMonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, rot_z);
     }
 }
+
+

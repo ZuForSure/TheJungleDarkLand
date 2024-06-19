@@ -32,4 +32,14 @@ public class PlayerBulletDamSender : BulletDamageSender
         Transform enemyExploision = FXSpawner.Instance.SpawnPrefab(FXSpawner.PlayerFX, spawnPos, spawnRot);
         enemyExploision.gameObject.SetActive(true);
     }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            this.SpawnFX();
+            BulletSpawner.Instance.DespawnToPool(transform.parent);
+        }
+        base.OnTriggerEnter2D(collision);
+    }
 }
