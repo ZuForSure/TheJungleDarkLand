@@ -29,6 +29,7 @@ public class EnemyBulletDamSender : BulletDamageSender
     {
         Vector3 spawnPos = transform.parent.position;
         Quaternion spawnRot = transform.parent.rotation;
+
         Transform enemyExploision = FXSpawner.Instance.SpawnPrefab(FXSpawner.EnemyFX, spawnPos, spawnRot);
         enemyExploision.gameObject.SetActive(true);
     }

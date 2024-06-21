@@ -10,11 +10,18 @@ public class BulletSpawner : Spawner
 
     public static string bulletOne = "Bullet_1";
     public static string arrow = "Arrow";
+    public static string cross = "Crossed";
 
     protected override void Awake()
     {
         base.Awake();
-        if (instance != null) Debug.LogError("Only 1 BulletSpawner are allowed to exist");
-        BulletSpawner.instance = this;
+        if (instance == null)
+        {
+            BulletSpawner.instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

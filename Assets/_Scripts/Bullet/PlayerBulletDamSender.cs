@@ -21,8 +21,8 @@ public class PlayerBulletDamSender : BulletDamageSender
 
     protected override void SendDamage(DamageReceiver damageReceiver)
     {
-        base.SendDamage(damageReceiver);
         this.SpawnFX();
+        base.SendDamage(damageReceiver);
     }
 
     protected virtual void SpawnFX()

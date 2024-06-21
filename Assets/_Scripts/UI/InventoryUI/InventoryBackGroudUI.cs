@@ -6,7 +6,6 @@ public class InventoryBackGroudUI : InventoryAbstractUI
 {
     [Header("Inventory BackGroud UI")]
     [SerializeField] protected List<ItemInventoryUI> itemInventoryUIs;
-    public List<ItemInventoryUI> ItemInventoryUIs => itemInventoryUIs;
 
     protected override void LoadComponent()
     {
@@ -34,5 +33,4 @@ public class InventoryBackGroudUI : InventoryAbstractUI
             this.itemInventoryUIs[i].SetIconFromInventory(this.inventoryUI.PlayerInventory.ItemInventoryList[i]);
         }
     }
-
 }

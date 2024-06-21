@@ -7,7 +7,7 @@ public abstract class DamageReceiver : ZuMonoBehaviour
     [Header("Damage Receiver")]
     [SerializeField] protected Collider2D colli2D;
     [SerializeField] protected int maxHP = 3;
-    [SerializeField] protected bool isDead = false;
+    public bool isDead = false;
     public int hp = 3;
 
     protected override void LoadComponent()

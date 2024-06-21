@@ -12,9 +12,10 @@ public class LookAtPlayer : LookAtTarget
         this.LoadPlayer();
     }
 
-    private void LateUpdate()
+    protected override void Start()
     {
-        this.AimTarget(this.player.position);
+        base.Start();
+        this.LoadPlayer();
     }
 
     protected virtual void LoadPlayer()
@@ -22,5 +23,10 @@ public class LookAtPlayer : LookAtTarget
         if (this.player != null) return;
         this.player = GameObject.Find("Player").transform;
         Debug.Log(transform.name + ": LoadPlayer", gameObject);
+    }
+
+    private void LateUpdate()
+    {
+        this.AimTarget(this.player.position);
     }
 }

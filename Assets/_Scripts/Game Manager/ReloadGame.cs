@@ -9,9 +9,9 @@ public class ReloadGame : MonoBehaviour
     {
         if (GameController.Instance.isGameOver)
         {
-            //Time.timeScale = 1;
             GameController.Instance.isGameOver = false;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(1);
+
         }
     }
 }

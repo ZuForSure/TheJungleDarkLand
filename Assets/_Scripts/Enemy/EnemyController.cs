@@ -9,10 +9,12 @@ public abstract class EnemyController : ZuMonoBehaviour
     [SerializeField] protected EnemyDetectCollision enemyDetect;
     [SerializeField] protected EnemyFollowPlayer enemyFollow;
     [SerializeField] protected EnemyAttack enemyAttack;
+    [SerializeField] protected EnemyDamageReceiver enemyDamageReceiver;
     public EnemySO EnemySO => enemySO;
     public EnemyDetectCollision EnemyDetectCollision => enemyDetect;
     public EnemyFollowPlayer EnemyFollowPlayer => enemyFollow;
     public EnemyAttack EnemyAttack => enemyAttack;
+    public EnemyDamageReceiver EnemyDamageReceiver => enemyDamageReceiver;
 
     protected override void LoadComponent()
     {
@@ -21,6 +23,7 @@ public abstract class EnemyController : ZuMonoBehaviour
         this.LoadEnemyDetect();
         this.LoadEnemyFollow();
         this.LoadEnemyAttack();
+        this.LoadEnemyDamageReceiver();
     }
 
     protected virtual void LoadEnemySO()
@@ -50,6 +53,13 @@ public abstract class EnemyController : ZuMonoBehaviour
         if (this.enemyAttack != null) return;
         this.enemyAttack = transform.GetComponentInChildren<EnemyAttack>();
         Debug.Log(transform.name + ": LoadEnemyAttack", gameObject);
+    }
+
+    protected virtual void LoadEnemyDamageReceiver()
+    {
+        if (this.enemyDamageReceiver != null) return;
+        this.enemyDamageReceiver = transform.GetComponentInChildren<EnemyDamageReceiver>();
+        Debug.Log(transform.name + ": LoadEnemyDamageReceiver", gameObject);
     }
 
     protected abstract string GetObjByName();

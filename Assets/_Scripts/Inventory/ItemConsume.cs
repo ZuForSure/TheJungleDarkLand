@@ -16,8 +16,19 @@ public class ItemConsume : InventoryAbstract
         if (itemType != ItemType.Food) return;
         if (!this.CanConsumeItem()) return;
 
-        this.inventory.DeductItem(itemName, consumeCount);
-        this.HealPlayerHP(this.hpToHeal);
+        if(itemName == ItemName.Meat)
+        {
+            this.inventory.DeductItem(itemName, consumeCount);
+            this.HealPlayerHP(this.hpToHeal);
+            return;
+        }   
+
+        if (itemName == ItemName.Soul)
+        {
+            this.inventory.DeductItem(itemName, consumeCount);
+            this.HealPlayerHP(2);
+            return;
+        }
     }
 
     protected virtual bool CanConsumeItem()

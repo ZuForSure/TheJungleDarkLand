@@ -41,8 +41,10 @@ public class ItemInventoryUI : ZuMonoBehaviour
         }
     }
 
-    public virtual void ConsumeItemByUI()
+    public void ConsumeItemByUI()
     {
+        Debug.Log("Click");
+
         if (this.itemSO_UI == null) return;
         ItemInventory itemInventory = new ItemInventory()
         {

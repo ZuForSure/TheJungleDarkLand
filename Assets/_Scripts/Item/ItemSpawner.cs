@@ -11,8 +11,14 @@ public class ItemSpawner : Spawner
     protected override void Awake()
     {
         base.Awake();
-        if (instance != null) Debug.LogError("Only 1 ItemSpawner are allowed to exist");
-        ItemSpawner.instance = this;
+        if (instance == null)
+        {
+            ItemSpawner.instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public virtual void SpawnItem(List<ItemSpawn> itemDropsList, Vector3 dropPos, Quaternion dropRot)

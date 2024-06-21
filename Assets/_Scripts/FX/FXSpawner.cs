@@ -10,11 +10,18 @@ public class FXSpawner : Spawner
 
     public static string EnemyFX = "EnemyExploision";
     public static string PlayerFX = "PlayerExploision";
+    public static string BossFX = "BossExploision";
 
     protected override void Awake()
     {
         base.Awake();
-        if (instance != null) Debug.LogError("Only 1 FXSpawner are allowed to exist");
-        FXSpawner.instance = this;
+        if(instance == null)
+        {
+            FXSpawner.instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

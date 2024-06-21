@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class EnemyFollowPlayer : FollowPlayer
 {
+    [Header("Enemy Follow Player")]
     [SerializeField] protected EnemyController enemyController;
 
     protected override void LoadComponent()

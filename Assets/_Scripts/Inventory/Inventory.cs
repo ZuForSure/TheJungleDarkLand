@@ -5,10 +5,10 @@ using UnityEngine;
 public class Inventory : PlayerAbstract
 {
     [Header("Inventory")]
-    [SerializeField] protected ItemConsume itemConsume;
-
     [SerializeField] protected List<ItemInventory> itemInventoryList;
     [SerializeField] protected int inventorySlots = 10;
+    [SerializeField] protected ItemConsume itemConsume;
+
     public List<ItemInventory> ItemInventoryList => itemInventoryList;
     public ItemConsume ItemConsume => itemConsume;
 
@@ -30,6 +30,7 @@ public class Inventory : PlayerAbstract
         this.itemConsume = transform.GetComponentInChildren<ItemConsume>();
         Debug.Log(transform.name + ": LoadItemConsume", gameObject);
     }
+
 
     protected virtual void AddEmptyItemInventory()
     {

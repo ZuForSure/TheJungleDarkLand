@@ -6,6 +6,7 @@ public class EnemyDamageReceiver : DamageReceiver
 {
     [Header("Enemy Damage Receiver")]
     [SerializeField] protected EnemyController enemyController;
+    [SerializeField] protected GameObject victoryUI;
 
     protected override void LoadComponent()
     {
@@ -29,13 +30,15 @@ public class EnemyDamageReceiver : DamageReceiver
 
     protected override void OnDead()
     {
-        this.DespawnEnemy();
         this.SpawnItemOnDead();
-    }
 
-    protected virtual void DespawnEnemy()
-    {
-        EnemySpawner.Instance.DespawnToPool(transform.parent);
+        if(enemyController.EnemySO.enemyType == EnemyType.Boss)
+        {
+            StartCoroutine(this.EndGame());
+            return;
+        }
+
+        this.DespawnEnemy();
     }
 
     protected virtual void SpawnItemOnDead()
@@ -45,4 +48,17 @@ public class EnemyDamageReceiver : DamageReceiver
         ItemSpawner.Instance.SpawnItem(this.enemyController.EnemySO.itemSpawnList, dropPos, dropRot);
     }
 
+    protected virtual void DespawnEnemy()
+    {
+        EnemySpawner.Instance.DespawnToPool(transform.parent);
+    }
+
+    IEnumerator EndGame()
+    {
+        this.enemyController.EnemyDetectCollision.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(10);
+        this.DespawnEnemy();
+        this.victoryUI.SetActive(true);
+    }
 }

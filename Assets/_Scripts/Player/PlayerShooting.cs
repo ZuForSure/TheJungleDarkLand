@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    [SerializeField] protected float shootCooldown = 0.5f;
+    [SerializeField] protected float shootCooldown = 1f;
     [SerializeField] protected float shootCooldownCount = 0f;
     [SerializeField] protected bool isShooting = false;
 

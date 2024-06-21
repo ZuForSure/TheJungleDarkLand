@@ -13,8 +13,14 @@ public class GameController : ZuMonoBehaviour
     protected override void Awake()
     {
         base.Awake();
-        if (instance != null) Debug.LogWarning("Only 1 GameController are allowed to exist");
-        GameController.instance = this;
+        if(instance == null)
+        {
+            GameController.instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     protected override void LoadComponent()
@@ -36,7 +42,6 @@ public class GameController : ZuMonoBehaviour
         this.isGameOver = true;
 
         StartCoroutine(GameOverDelay());
-        //Time.timeScale = 0;
     }
 
     private IEnumerator GameOverDelay()
