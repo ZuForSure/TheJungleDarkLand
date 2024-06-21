@@ -18270,7 +18270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc5999ac1c377845bb9c347640d689e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootCooldown: 0.5
+  shootCooldown: 1
   shootCooldownCount: 0
   isShooting: 0
 --- !u!1 &2082016397
