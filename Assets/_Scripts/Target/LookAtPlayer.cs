@@ -1,11 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LookAtPlayer : LookAtTarget
 {
     [Header("Look At Player")]
     [SerializeField] protected Transform player;
+    private void LateUpdate()
+    {
+        this.AimTarget(this.player.position);
+    }
 
     protected override void LoadComponent()
     {
@@ -25,8 +27,5 @@ public class LookAtPlayer : LookAtTarget
         Debug.Log(transform.name + ": LoadPlayer", gameObject);
     }
 
-    private void LateUpdate()
-    {
-        this.AimTarget(this.player.position);
-    }
+    
 }

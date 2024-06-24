@@ -24,17 +24,17 @@ public class BossAttack : EnemyAttack
 
         Vector3 pos = transform.parent.position;
         Quaternion rot = transform.rotation;
-        Transform laser = BulletSpawner.Instance.SpawnPrefab(BulletSpawner.cross, pos, rot);
-        if (laser == null) return;
+        Transform cross = BulletSpawner.Instance.SpawnPrefab(BulletSpawner.cross, pos, rot);
+        if (cross == null) return;
 
-        laser.gameObject.SetActive(true);
-        BulletController bulletCtrl = laser.GetComponent<BulletController>();
+        cross.gameObject.SetActive(true);
+        BulletController bulletCtrl = cross.GetComponent<BulletController>();
         bulletCtrl.SetShooter(transform.parent);
     }
 
     protected override bool CanAttack()
     {
-        this.isAttaking = enemyController.EnemyDetectCollision.isPlayerComeIn;
+        this.isAttaking = this.enemyController.EnemyDetectCollision.isPlayerComeIn;
         if (GameController.Instance.isGameOver) this.isAttaking = false;
 
         return this.isAttaking;   

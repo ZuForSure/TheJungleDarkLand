@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
@@ -10,7 +8,6 @@ public abstract class EnemyDetectCollision : ZuMonoBehaviour
     [SerializeField] protected CircleCollider2D circleCollider2D;
     [SerializeField] protected float detectRadius = 3f;
     [SerializeField] protected string compareTag = "Player";
-    
     public bool isPlayerComeIn = false;
 
     protected override void LoadComponent()

@@ -27,6 +27,7 @@ public class PlayerAttack : ZuMonoBehaviour
         Debug.Log(transform.name + ": LoadHitBox", gameObject);
     }
 
+
     protected override void Update()
     {
         this.GetInput();

@@ -8,20 +8,33 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance => instance;
 
     [SerializeField] protected Vector3 mouseWorldPos;
+
+
     [SerializeField] protected float inputHorizontal;
     [SerializeField] protected float inputVertical;
+    public float InputHorizontal => inputHorizontal;
+    public float InputVertical => inputVertical;
+    protected virtual void GetInputMove()
+    {
+        this.inputHorizontal = Input.GetAxisRaw("Horizontal");
+        this.inputVertical = Input.GetAxisRaw("Vertical");
+    }
+
+
+
     [SerializeField] protected float inputDash;
     [SerializeField] protected float inputAttack;
     [SerializeField] protected float inputShoot;
     [SerializeField] protected bool inputInventory;
 
     public Vector3 MouseWorldPos => mouseWorldPos;
-    public float InputHorizontal => inputHorizontal;
-    public float InputVertical => inputVertical;
+    
     public float InputDash=> inputDash;
     public float InputAttack => inputAttack;
     public float InputShoot => inputShoot;
     public bool InputInventory => inputInventory;
+
+
 
     private void Awake()
     {
@@ -44,11 +57,7 @@ public class InputManager : MonoBehaviour
         this.mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
-    protected virtual void GetInputMove()
-    {
-        this.inputHorizontal = Input.GetAxisRaw("Horizontal");
-        this.inputVertical = Input.GetAxisRaw("Vertical");
-    }
+    
 
     protected virtual void GetInputDash()
     {

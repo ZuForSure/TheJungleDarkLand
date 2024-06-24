@@ -43,16 +43,15 @@ public class ItemInventoryUI : ZuMonoBehaviour
 
     public void ConsumeItemByUI()
     {
-        Debug.Log("Click");
-
         if (this.itemSO_UI == null) return;
+
         ItemInventory itemInventory = new ItemInventory()
         {
-
             itemSO = this.itemSO_UI,
             itemCount = 1,
             itemMaxStack = this.itemSO_UI.maxStack,
         };
+
         this.invenBackGroundUI.InventoryUI.PlayerInventory.ItemConsume.ConSume(itemInventory);
     }
 }

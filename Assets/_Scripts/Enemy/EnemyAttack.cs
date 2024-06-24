@@ -22,5 +22,4 @@ public abstract class EnemyAttack : EnemyAbstract
     }
 
     protected abstract bool CanAttack();
-    
 }

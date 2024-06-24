@@ -40,7 +40,6 @@ public class GameController : ZuMonoBehaviour
     public virtual void GameOver()
     {
         this.isGameOver = true;
-
         StartCoroutine(GameOverDelay());
     }
 
