@@ -6,7 +6,6 @@ public class EnemyDamageReceiver : DamageReceiver
 {
     [Header("Enemy Damage Receiver")]
     [SerializeField] protected EnemyController enemyController;
-    [SerializeField] protected GameObject victoryUI;
 
     protected override void LoadComponent()
     {
@@ -24,6 +23,7 @@ public class EnemyDamageReceiver : DamageReceiver
 
     public override void ReBorn()
     {
+        if (this.enemyController == null) return;
         this.maxHP = this.enemyController.EnemySO.hp;
         base.ReBorn();  
     }
@@ -31,14 +31,11 @@ public class EnemyDamageReceiver : DamageReceiver
     protected override void OnDead()
     {
         this.SpawnItemOnDead();
-
-        if(enemyController.EnemySO.enemyType == EnemyType.Boss)
-        {
-            StartCoroutine(this.EndGame());
-            return;
-        }
-
+        this.SpawnFXOnDead();
         this.DespawnEnemy();
+
+        if (enemyController.EnemySO.enemyType != EnemyType.Boss) return;
+        GameController.Instance.VictoryGame();
     }
 
     protected virtual void SpawnItemOnDead()
@@ -53,12 +50,22 @@ public class EnemyDamageReceiver : DamageReceiver
         EnemySpawner.Instance.DespawnToPool(transform.parent);
     }
 
-    IEnumerator EndGame()
+    protected virtual void SpawnFXOnDead()
     {
-        this.enemyController.EnemyDetectCollision.gameObject.SetActive(false);
+        Vector3 spawnPos = transform.parent.position;
+        Quaternion spawnRot = transform.parent.rotation;
 
-        yield return new WaitForSeconds(10);
-        this.DespawnEnemy();
-        this.victoryUI.SetActive(true);
+        Transform bossDeath = FXSpawner.Instance.SpawnPrefab(transform.parent.name + " Death", spawnPos, spawnRot);
+        bossDeath.gameObject.SetActive(true);
     }
+
+    //IEnumerator EndGame()
+    //{
+    //    this.enemyController.EnemyDetectCollision.gameObject.SetActive(false);
+
+    //    yield return new WaitForSeconds(10);
+
+    //    this.victoryUI.SetActive(true);
+    //    this.DespawnEnemy();
+    //}
 }

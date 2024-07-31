@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class PlayerAttack : ZuMonoBehaviour
+public class PlayerAttack : PlayerAbstract
 {
+    [Header("Player Attack")]
     [SerializeField] protected Transform hitBox;
     [SerializeField] protected float attackTime = 0.25f;
     [SerializeField] protected float attackTimeCounter = 0f;
@@ -27,7 +28,6 @@ public class PlayerAttack : ZuMonoBehaviour
         Debug.Log(transform.name + ": LoadHitBox", gameObject);
     }
 
-
     protected override void Update()
     {
         this.GetInput();
@@ -43,7 +43,11 @@ public class PlayerAttack : ZuMonoBehaviour
     {
         if (GameController.Instance.isGameOver) return;
 
-        if (this.CanAttack()) this.StartAttacking();
+        if (this.CanAttack()) 
+        { 
+            this.StartAttacking();
+            AudioManager.Instance.PlaySwingWeaponSound();
+        }
         if (this.attackTimeCounter < 0 && this.isAttacking) this.StopAttacking();
         this.AttackTimerDown();
     }

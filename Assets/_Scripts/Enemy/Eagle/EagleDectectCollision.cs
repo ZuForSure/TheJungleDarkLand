@@ -14,7 +14,7 @@ public class EagleDectectCollision : EnemyDetectCollision
 
     protected virtual void ResetRadius()
     {
-        this.detectRadius = 10f;
+        this.detectRadius = 6f;
         this.circleCollider2D.radius = this.detectRadius;
         Debug.Log(transform.name + ": ResetRadius", gameObject);
     }

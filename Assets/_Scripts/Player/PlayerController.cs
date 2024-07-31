@@ -4,26 +4,22 @@ using UnityEngine;
 
 public class PlayerController : ZuMonoBehaviour
 {
-    //[SerializeField] protected PlayerMovement playerMovement;
     [SerializeField] protected PlayerAttack playerAttack;
     [SerializeField] protected PlayerDamageReceiver playerDamReceiver;
-    //public PlayerMovement PlayerMovement => playerMovement;
+    [SerializeField] protected PlayerShooting playerShooting;
+    [SerializeField] protected Rigidbody2D rd2D;
     public PlayerAttack PlayerAttack => playerAttack;
     public PlayerDamageReceiver PlayerDamageReceiver => playerDamReceiver;
+    public PlayerShooting PlayerShooting => playerShooting;
+    public Rigidbody2D Rd2D => rd2D;
 
     protected override void LoadComponent()
     {
-        //this.LoadPlayerMovement();
         this.LoadPlayerAttack();
+        this.LoadPlayerShooting();
         this.LoadPlayerDamageReceiver();
+        this.LoadRigi2D();
     }
-
-    //protected virtual void LoadPlayerMovement()
-    //{
-    //    if (this.playerMovement != null) return;
-    //    this.playerMovement = transform.GetComponentInChildren<PlayerMovement>();
-    //    Debug.Log(transform.name + ": LoadPlayerMovement", gameObject);
-    //}
 
     protected virtual void LoadPlayerAttack()
     {
@@ -32,10 +28,24 @@ public class PlayerController : ZuMonoBehaviour
         Debug.Log(transform.name + ": LoadPlayerAttack", gameObject);
     }
 
+    protected virtual void LoadPlayerShooting()
+    {
+        if (this.playerShooting != null) return;
+        this.playerShooting = transform.GetComponentInChildren<PlayerShooting>();
+        Debug.Log(transform.name + ": LoadPlayerShooting", gameObject);
+    }
+
     protected virtual void LoadPlayerDamageReceiver()
     {
         if (this.playerDamReceiver != null) return;
         this.playerDamReceiver = transform.GetComponentInChildren<PlayerDamageReceiver>();
         Debug.Log(transform.name + ": LoadPlayerDamageReceiver", gameObject);
+    }
+
+    protected virtual void LoadRigi2D()
+    {
+        if (this.rd2D != null) return;
+        this.rd2D = GetComponent<Rigidbody2D>();
+        Debug.Log(transform.name + ": LoadRigi2D", gameObject);
     }
 }

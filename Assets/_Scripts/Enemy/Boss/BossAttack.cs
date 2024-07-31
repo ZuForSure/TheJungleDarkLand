@@ -6,7 +6,7 @@ public class BossAttack : EnemyAttack
 {
     [Header("Boss Attack")]
     [SerializeField] protected float timer = 0f;
-    [SerializeField] protected float delay = 1.5f;
+    [SerializeField] protected float delay = 3f;
 
     protected override void Update()
     {

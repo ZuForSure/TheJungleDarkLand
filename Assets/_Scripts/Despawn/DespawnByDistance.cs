@@ -5,7 +5,7 @@ using UnityEngine;
 public class DespawnByDistance : Despawn
 {
     [SerializeField] protected float distance = 0f;
-    [SerializeField] protected float distanceLimit = 30f;
+    [SerializeField] protected float distanceLimit = 20f;
     [SerializeField] protected Transform mainCamera;
 
     protected override void LoadComponent()

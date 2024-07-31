@@ -30,7 +30,7 @@ public class BossAnimation : EnemyAbstract
     protected virtual void Animation()
     {
         this.AttackAnimation();
-        this.DeathAnimation();
+        //this.DeathAnimation();
     }
 
     protected virtual void AttackAnimation()
@@ -38,10 +38,10 @@ public class BossAnimation : EnemyAbstract
         this.animator.SetBool("IsShooting", this.enemyController.EnemyAttack.isAttaking);
     }
 
-    protected virtual void DeathAnimation()
-    {
-        this.animator.SetBool("IsDead", this.enemyController.EnemyDamageReceiver.isDead);
-    }
+    //protected virtual void DeathAnimation()
+    //{
+    //    this.animator.SetBool("IsDead", this.enemyController.EnemyDamageReceiver.isDead);
+    //}
 
     protected virtual Vector3 GetDirection()
     {

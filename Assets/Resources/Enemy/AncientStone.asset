@@ -15,4 +15,5 @@ MonoBehaviour:
   enemyName: 3
   enemyType: 2
   hp: 100
-  damageMax: 5
+  damageMax: 4
+  itemSpawnList: []

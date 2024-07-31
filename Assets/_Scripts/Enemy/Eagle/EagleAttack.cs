@@ -28,6 +28,7 @@ public class EagleAttack : EnemyAttack
         newArrow.gameObject.SetActive(true);
         BulletController bulletCtrl = newArrow.GetComponent<BulletController>();
         bulletCtrl.SetShooter(transform.parent);
+        AudioManager.Instance.PlayEnemtShootSound();
     }
 
     protected override bool CanAttack()

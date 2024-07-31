@@ -23,6 +23,7 @@ public class EnemyBulletDamSender : BulletDamageSender
     {
         base.SendDamage(damageReceiver);
         this.SpawnFX();
+        AudioManager.Instance.PlayExplosionEnemySound();
     }
 
     protected virtual void SpawnFX()
@@ -41,6 +42,7 @@ public class EnemyBulletDamSender : BulletDamageSender
         {
             this.SpawnFX();
             BulletSpawner.Instance.DespawnToPool(transform.parent);
+            AudioManager.Instance.PlayExplosionEnemySound();
         }
         base.OnTriggerEnter2D(collision);
     }

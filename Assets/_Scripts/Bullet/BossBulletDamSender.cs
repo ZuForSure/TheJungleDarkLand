@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossBulletDamSender : EnemyBulletDamSender
 {
     [Header("Boss Bullet Damage Sender")]
-    [SerializeField] protected int bossDamage = 5;
+    [SerializeField] protected int bossDamage = 4;
 
     protected override void ResetValue()
     {

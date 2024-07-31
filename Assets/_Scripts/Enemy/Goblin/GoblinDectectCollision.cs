@@ -14,7 +14,7 @@ public class GoblinDectectCollision : EnemyDetectCollision
 
     protected virtual void ResetRadius()
     {
-        this.detectRadius = 6f;
+        this.detectRadius = 3f;
         this.circleCollider2D.radius = this.detectRadius;
         Debug.Log(transform.name + ": ResetRadius", gameObject);
     }

@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShooting : MonoBehaviour
+public class PlayerShooting : ZuMonoBehaviour
 {
     [SerializeField] protected float shootCooldown = 1f;
     [SerializeField] protected float shootCooldownCount = 0f;
     [SerializeField] protected bool isShooting = false;
-
-    private void Update()
-    {
-        this.IsShooting();
-    }
+    [SerializeField] protected int maxManaShoot = 4;
+    public int MaxManaShoot => maxManaShoot;
+    public int manaShoot = 0;
 
     private void FixedUpdate()
     {
@@ -20,9 +18,12 @@ public class PlayerShooting : MonoBehaviour
 
     protected virtual void Shooting()
     {
-        if (this.isShooting && this.shootCooldownCount < 0f)
+        if (this.manaShoot <= 0) return;
+
+        if (this.IsShooting() && this.shootCooldownCount < 0f)
         {
             this.shootCooldownCount = this.shootCooldown;
+            this.manaShoot--;
 
             Vector3 pos = transform.position;
             Quaternion rot = transform.rotation;
@@ -32,6 +33,7 @@ public class PlayerShooting : MonoBehaviour
 
             BulletController bulletCtrl = newBullet.GetComponent<BulletController>();
             bulletCtrl.SetShooter(transform.parent);
+            AudioManager.Instance.PlayShootSound();
         }
            
         if (this.shootCooldownCount < 0 && this.isShooting) this.isShooting = false;

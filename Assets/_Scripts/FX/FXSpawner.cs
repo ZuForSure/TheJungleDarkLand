@@ -11,6 +11,8 @@ public class FXSpawner : Spawner
     public static string EnemyFX = "EnemyExploision";
     public static string PlayerFX = "PlayerExploision";
     public static string BossFX = "BossExploision";
+    public static string BloodFX = "Blood";
+    public static string EagleDeathFX = "Eagle Death";
 
     protected override void Awake()
     {

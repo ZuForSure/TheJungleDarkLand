@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ItemConsume : InventoryAbstract
 {
+    [Header("Item Consume")]
     [SerializeField] protected int hpToHeal = 1;
-
+    
     public void ConSume(ItemInventory itemInventory)
     {
         int consumeCount = itemInventory.itemCount;
@@ -15,6 +16,8 @@ public class ItemConsume : InventoryAbstract
 
         if (itemType != ItemType.Food) return;
         if (!this.CanConsumeItem()) return;
+
+        AudioManager.Instance.PlayHealSound();
 
         if(itemName == ItemName.Meat)
         {
@@ -40,5 +43,4 @@ public class ItemConsume : InventoryAbstract
     {
         this.inventory.PlayerCtrl.PlayerDamageReceiver.hp += healing;
     }
-
 }

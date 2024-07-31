@@ -22,6 +22,7 @@ public class PlayerBulletDamSender : BulletDamageSender
     protected override void SendDamage(DamageReceiver damageReceiver)
     {
         this.SpawnFX();
+        AudioManager.Instance.PlayExplosionPlayer();
         base.SendDamage(damageReceiver);
     }
 
@@ -38,6 +39,7 @@ public class PlayerBulletDamSender : BulletDamageSender
         if (collision.gameObject.CompareTag("Ground"))
         {
             this.SpawnFX();
+            AudioManager.Instance.PlayExplosionPlayer();
             BulletSpawner.Instance.DespawnToPool(transform.parent);
         }
         base.OnTriggerEnter2D(collision);

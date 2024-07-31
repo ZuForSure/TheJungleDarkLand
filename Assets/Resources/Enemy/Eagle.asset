@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: 2
   enemyType: 1
-  hp: 8
+  hp: 12
   damageMax: 2
   itemSpawnList:
   - itemSO: {fileID: 11400000, guid: 00ea50ef28ad8db42aeb588967f66bc8, type: 2}

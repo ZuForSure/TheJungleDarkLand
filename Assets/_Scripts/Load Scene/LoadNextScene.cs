@@ -17,6 +17,7 @@ public class LoadNextScene : ZuMonoBehaviour
         base.LoadComponent();
         this.LoadBox2D();
         this.LoadPlayerInven();
+        this.LoadScenceTranstision();
     }
 
     protected virtual void LoadBox2D()
@@ -32,6 +33,13 @@ public class LoadNextScene : ZuMonoBehaviour
         if (this.playerInven != null) return;
         this.playerInven = GameObject.FindObjectOfType<Inventory>();
         Debug.Log(transform.name + (": LoadPlayerInven"), gameObject);
+    }
+
+    protected virtual void LoadScenceTranstision()
+    {
+        if (this.transitionAnim != null) return;
+        this.transitionAnim = GameObject.Find("Scence Transtision").GetComponent<Animator>();
+        Debug.Log(transform.name + (": LoadScenceTranstision"), gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -76,6 +84,7 @@ public class LoadNextScene : ZuMonoBehaviour
         yield return waitForSeconds;
 
         SceneManager.LoadScene(transform.name);
+
         this.transitionAnim.SetTrigger("Start");
     }
 }
